@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Éveil — Panneau d'administration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root{
+    --ink:#0E1B2B; --ink-soft:#1C2E45;
+    --paper:#F7F2E7; --paper-dim:#EFE7D6;
+    --green:#1B7340; --red:#B3122E;
+    --gold:#C99A3D; --gold-bright:#E9B94A;
+    --line: rgba(14,27,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased;}
+  .serif{font-family:'Fraunces', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+
+  .app{display:flex; min-height:100vh;}
+
+  /* Sidebar */
+  .sidebar{width:236px; flex-shrink:0; background:var(--ink); color:var(--paper); display:flex; flex-direction:column;}
+  .sb-brand{display:flex; align-items:center; gap:10px; padding:22px 20px; border-bottom:1px solid rgba(247,242,231,0.1);}
+  .sb-logo{width:32px; height:32px; border-radius:50%; background:var(--gold-bright); color:var(--ink); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:600;}
+  .sb-name{font-size:14px; font-weight:600; line-height:1.2;}
+  .sb-sub{font-size:10px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.5;}
+  .sb-nav{flex:1; padding:16px 12px;}
+  .sb-btn{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:10px 12px; border-radius:8px; font-size:13.5px; font-weight:500;
+    background:transparent; color:rgba(247,242,231,0.75); border:none; cursor:pointer; margin-bottom:4px;
+  }
+  .sb-btn.active{background:rgba(233,185,74,0.14); color:var(--gold-bright);}
+  .sb-btn .count{font-family:'IBM Plex Mono',monospace; font-size:11px; opacity:0.7;}
+  .sb-note{padding:18px 20px; font-size:11px; line-height:1.6; color:rgba(247,242,231,0.55); border-top:1px solid rgba(247,242,231,0.1);}
+
+  /* Main */
+  .main{flex:1; padding:34px 44px; max-width:1040px;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:4px;}
+  .page-title{font-size:26px; margin-bottom:28px;}
+
+  .grid2{display:grid; grid-template-columns:1fr 1.15fr; gap:26px; align-items:start;}
+  .card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:20px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:6px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:9px 12px; border:1px solid var(--line); border-radius:6px; font-size:13.5px; font-family:'Inter',sans-serif;
+    background:#fff; color:var(--ink);
+  }
+  .field textarea{resize:vertical; line-height:1.6;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .btn-row{display:flex; gap:10px; margin-top:6px;}
+  .btn{flex:1; padding:11px; border-radius:7px; font-size:13.5px; font-weight:600; cursor:pointer; border:1px solid var(--ink); background:transparent; color:var(--ink);}
+  .btn-solid{background:var(--ink); color:var(--paper); display:flex; align-items:center; justify-content:center; gap:6px;}
+
+  .list-title{font-size:17px; margin-bottom:14px;}
+  .empty{border:1px dashed var(--line); border-radius:12px; padding:50px 20px; text-align:center; color:var(--ink-soft); opacity:0.7; font-size:13.5px;}
+
+  .item{background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:12px;}
+  .item-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; gap:10px;}
+  .tags{display:flex; gap:8px; flex-wrap:wrap;}
+  .tag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:999px;}
+  .status{display:inline-flex; align-items:center; gap:6px;}
+  .status .dot{width:6px; height:6px; border-radius:50%;}
+  .item h4{font-size:14.5px; margin-bottom:4px;}
+  .item .meta{font-size:12px; color:var(--ink-soft); opacity:0.7; margin-bottom:10px;}
+  .item .link{font-size:12px; color:var(--gold); display:inline-block; margin-bottom:10px; word-break:break-all;}
+  .item-actions{display:flex; gap:8px; flex-wrap:wrap; align-items:center; position:relative;}
+  .small-btn{font-size:12px; font-weight:500; padding:6px 12px; border-radius:6px; border:1px solid var(--line); background:#fff; cursor:pointer; color:var(--ink);}
+  .del-btn{border:none; background:none; cursor:pointer; color:var(--red); opacity:0.7; margin-left:auto;}
+
+  .thumb{width:100%; max-height:140px; object-fit:cover; border-radius:8px; margin-bottom:10px; display:block; background:var(--paper-dim);}
+  .thumb-sm{width:56px; height:56px; object-fit:cover; border-radius:6px; flex-shrink:0;}
+  .upload-row{display:flex; gap:8px; align-items:center;}
+  .upload-row input[type=file]{font-size:12px;}
+  .preview-box{margin-top:8px;}
+
+  .stat-cards{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:26px;}
+  .stat-card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 18px;}
+  .stat-card .num{font-family:'Fraunces',serif; font-size:26px; color:var(--ink);}
+  .stat-card .lbl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); opacity:0.7; margin-top:2px;}
+  .charts-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .chart-card{background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px; grid-column: span 1;}
+  .chart-card.full{grid-column: span 2;}
+  .chart-card h4{font-size:14px; margin-bottom:14px; font-weight:600; color:var(--ink-soft);}
+  .chart-card canvas{max-height:230px;}
+
+  .share-wrap{position:relative; display:inline-block;}
+  .share-menu{
+    position:absolute; top:34px; left:0; width:210px; background:#fff; border:1px solid var(--line);
+    border-radius:10px; box-shadow:0 12px 30px rgba(14,27,43,0.15); z-index:20; overflow:hidden; display:none;
+  }
+  .share-menu.open{display:block;}
+  .share-menu button{width:100%; text-align:left; padding:10px 14px; font-size:13px; border:none; background:none; cursor:pointer;}
+  .share-menu button:hover{background:rgba(14,27,43,0.05);}
+  .share-menu hr{border:none; border-top:1px solid var(--line);}
+  .share-menu .copy-btn{color:var(--gold); font-weight:600;}
+
+  .toast{
+    position:fixed; bottom:26px; right:26px; background:var(--ink); color:var(--paper);
+    padding:12px 18px; border-radius:8px; font-size:13.5px; font-weight:500; border:1px solid var(--gold-bright);
+    display:none; align-items:center; gap:8px; z-index:100;
+  }
+  .toast.show{display:flex;}
+
+  @media(max-width:860px){
+    .app{flex-direction:column;}
+    .sidebar{width:100%;}
+    .grid2{grid-template-columns:1fr;}
+    .main{padding:24px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo">É</div>
+      <div>
+        <div class="sb-name serif">L'Éveil</div>
+        <div class="sb-sub mono">Admin</div>
+      </div>
+    </div>
+    <div class="sb-nav">
+      <button class="sb-btn active" id="nav-pubs" onclick="switchTab('pubs')">
+        <span>📄 Publications</span><span class="count mono" id="count-pubs">0</span>
+      </button>
+      <button class="sb-btn" id="nav-podcasts" onclick="switchTab('podcasts')">
+        <span>🎙 Podcasts</span><span class="count mono" id="count-podcasts">0</span>
+      </button>
+      <button class="sb-btn" id="nav-stats" onclick="switchTab('stats')">
+        <span>📊 Statistiques</span><span class="count mono"></span>
+      </button>
+    </div>
+    <div class="sb-note">Le partage social ouvre de vraies fenêtres de partage. L'envoi d'e-mails se fait via « Copier pour Brevo ».</div>
+  </div>
+
+  <div class="main">
+    <div class="eyebrow mono">Panneau d'administration</div>
+    <h2 class="page-title serif" id="page-title">Publications</h2>
+    <div id="panel"></div>
+  </div>
+</div>
+
+<div class="toast mono" id="toast">✓ <span id="toast-msg"></span></div>
+
+<script>
+const DOMAINES = ["Gouvernance publique","Développement économique","Industrialisation","Agriculture","Éducation","Santé","Innovation","Intelligence artificielle","Transformation numérique","Énergie","Emploi des jeunes","Entrepreneuriat","Diaspora","Décentralisation","Intégration africaine"];
+const TYPES = ["Tribune","Note d'analyse","Policy paper","Rapport","Étude comparative"];
+const SITE_URL = "https://leveil.cm";
+
+let state = {
+  pubs: JSON.parse(localStorage.getItem('leveil_publications') || '[]'),
+  podcasts: JSON.parse(localStorage.getItem('leveil_podcasts') || '[]'),
+};
+let currentTab = 'pubs';
+
+function uid(){ return Math.random().toString(36).slice(2,10); }
+function todayFR(){
+  return new Date().toLocaleDateString('fr-FR', {day:'2-digit', month:'short', year:'numeric'});
+}
+function persist(){
+  localStorage.setItem('leveil_publications', JSON.stringify(state.pubs));
+  localStorage.setItem('leveil_podcasts', JSON.stringify(state.podcasts));
+  document.getElementById('count-pubs').textContent = state.pubs.length;
+  document.getElementById('count-podcasts').textContent = state.podcasts.length;
+}
+function showToast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=> t.classList.remove('show'), 2600);
+}
+function typeColor(t){
+  if(t==='Tribune') return 'var(--green)';
+  if(t==='Policy paper') return 'var(--red)';
+  if(t==='Rapport') return 'var(--gold)';
+  return 'var(--ink-soft)';
+}
+function escapeHtml(s){
+  return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function previewImage(inputId, previewId){
+  const val = document.getElementById(inputId).value.trim();
+  const box = document.getElementById(previewId);
+  box.innerHTML = val ? `<img class="thumb" src="${escapeHtml(val)}" alt="">` : '';
+}
+
+function handleFileUpload(fileInputId, textInputId, previewId){
+  const file = document.getElementById(fileInputId).files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    document.getElementById(textInputId).value = e.target.result;
+    previewImage(textInputId, previewId);
+  };
+  reader.readAsDataURL(file);
+}
+
+function switchTab(tab){
+  currentTab = tab;
+  document.getElementById('nav-pubs').classList.toggle('active', tab==='pubs');
+  document.getElementById('nav-podcasts').classList.toggle('active', tab==='podcasts');
+  document.getElementById('nav-stats').classList.toggle('active', tab==='stats');
+  document.getElementById('page-title').textContent = tab==='pubs' ? 'Publications' : tab==='podcasts' ? 'Podcasts' : 'Statistiques';
+  render();
+}
+
+function render(){
+  const panel = document.getElementById('panel');
+  if(currentTab === 'stats'){
+    panel.innerHTML = statsHtml();
+    drawCharts();
+    return;
+  }
+  panel.innerHTML = currentTab === 'pubs' ? publicationsFormHtml() + '<div id="list"></div>' : podcastsFormHtml() + '<div id="list"></div>';
+  renderList();
+}
+
+/* ---------------- PUBLICATIONS ---------------- */
+function publicationsFormHtml(){
+  const domainOptions = DOMAINES.map(d=>`<option>${d}</option>`).join('');
+  const typeOptions = TYPES.map(t=>`<option>${t}</option>`).join('');
+  return `
+  <div class="grid2">
+    <div>
+      <h3 class="list-title serif">Nouvelle publication</h3>
+      <div class="card">
+        <div class="row2">
+          <div class="field"><label>Type</label>
+            <select id="f-type">${typeOptions}</select>
+          </div>
+          <div class="field"><label>Domaine</label>
+            <select id="f-domain">${domainOptions}</select>
+          </div>
+        </div>
+        <div class="field"><label>Titre</label><input id="f-title" placeholder="Titre de la publication"></div>
+        <div class="field"><label>Auteur</label><input id="f-author" placeholder="Nom de l'auteur"></div>
+        <div class="field">
+          <label>Image (URL ou fichier)</label>
+          <input id="f-image" placeholder="https://…/image.jpg" oninput="previewImage('f-image','f-preview')">
+          <div class="upload-row" style="margin-top:6px;">
+            <input type="file" id="f-image-file" accept="image/*" onchange="handleFileUpload('f-image-file','f-image','f-preview')">
+          </div>
+          <div class="preview-box" id="f-preview"></div>
+        </div>
+        <div class="field"><label>Contenu</label><textarea id="f-content" rows="9" placeholder="Collez ou rédigez le texte complet ici…"></textarea></div>
+        <div class="btn-row">
+          <button class="btn" onclick="savePublication(false)">Enregistrer le brouillon</button>
+          <button class="btn btn-solid" onclick="savePublication(true)">➤ Publier</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="list-title serif">Vos publications (<span id="pub-total">${state.pubs.length}</span>)</h3>
+    </div>
+  </div>`;
+}
+
+function savePublication(publishNow){
+  const type = document.getElementById('f-type').value;
+  const domain = document.getElementById('f-domain').value;
+  const title = document.getElementById('f-title').value.trim();
+  const author = document.getElementById('f-author').value.trim();
+  const image = document.getElementById('f-image').value.trim();
+  const content = document.getElementById('f-content').value.trim();
+  if(!title || !content){ showToast('Titre et contenu requis'); return; }
+  const excerpt = content.slice(0,160) + (content.length>160 ? '…' : '');
+  const now = new Date();
+  state.pubs.unshift({
+    id: uid(), type, domain, title, author, image, content, excerpt,
+    status: publishNow ? 'publié' : 'brouillon', date: todayFR(), dateISO: now.toISOString()
+  });
+  persist();
+  render();
+  showToast(publishNow ? 'Publication publiée' : 'Brouillon enregistré');
+}
+
+/* ---------------- PODCASTS ---------------- */
+function podcastsFormHtml(){
+  return `
+  <div class="grid2">
+    <div>
+      <h3 class="list-title serif">Nouvel épisode</h3>
+      <div class="card">
+        <div class="field"><label>Titre de l'épisode</label><input id="p-title" placeholder="Ex. Décrypter la décentralisation"></div>
+        <div class="field"><label>Lien d'écoute (Spotify for Podcasters, etc.)</label><input id="p-link" placeholder="https://open.spotify.com/show/…"></div>
+        <div class="field">
+          <label>Image de couverture (URL ou fichier)</label>
+          <input id="p-image" placeholder="https://…/cover.jpg" oninput="previewImage('p-image','p-preview')">
+          <div class="upload-row" style="margin-top:6px;">
+            <input type="file" id="p-image-file" accept="image/*" onchange="handleFileUpload('p-image-file','p-image','p-preview')">
+          </div>
+          <div class="preview-box" id="p-preview"></div>
+        </div>
+        <div class="field"><label>Description</label><textarea id="p-desc" rows="8" placeholder="Résumé de l'épisode, invité, thème abordé…"></textarea></div>
+        <div class="btn-row">
+          <button class="btn" onclick="savePodcast(false)">Enregistrer le brouillon</button>
+          <button class="btn btn-solid" onclick="savePodcast(true)">➤ Publier</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="list-title serif">Vos épisodes (<span id="pod-total">${state.podcasts.length}</span>)</h3>
+    </div>
+  </div>`;
+}
+
+function savePodcast(publishNow){
+  const title = document.getElementById('p-title').value.trim();
+  const link = document.getElementById('p-link').value.trim();
+  const image = document.getElementById('p-image').value.trim();
+  const description = document.getElementById('p-desc').value.trim();
+  if(!title){ showToast("Le titre de l'épisode est requis"); return; }
+  const now = new Date();
+  state.podcasts.unshift({
+    id: uid(), title, link, image, description,
+    status: publishNow ? 'publié' : 'brouillon', date: todayFR(), dateISO: now.toISOString()
+  });
+  persist();
+  render();
+  showToast(publishNow ? 'Épisode publié' : 'Brouillon enregistré');
+}
+
+/* ---------------- SHARED LIST RENDER ---------------- */
+function renderList(){
+  const list = document.getElementById('list');
+  const items = currentTab === 'pubs' ? state.pubs : state.podcasts;
+  if(items.length === 0){
+    list.innerHTML = `<div class="empty">${currentTab==='pubs' ? "Aucune publication pour l'instant. Rédigez la première tribune à gauche." : "Aucun épisode pour l'instant. Ajoutez le premier à gauche."}</div>`;
+    return;
+  }
+  list.innerHTML = items.map(it => renderItem(it, currentTab)).join('');
+}
+
+function renderItem(it, kind){
+  const statusColor = it.status === 'publié' ? 'var(--green)' : 'var(--ink-soft)';
+  const statusBg = it.status === 'publié' ? 'rgba(27,115,64,0.12)' : 'rgba(14,27,43,0.06)';
+  const typeTag = kind==='pubs' ? `<span class="tag" style="background:${typeColor(it.type)}22; color:${typeColor(it.type)}">${it.type}</span>` : '';
+  const meta = kind==='pubs' ? `${it.domain} · ${it.author || 'Auteur non renseigné'} · ${it.date}` : it.date;
+  const linkHtml = kind==='podcasts' && it.link ? `<a class="link" href="${escapeHtml(it.link)}" target="_blank" rel="noreferrer">${escapeHtml(it.link)} ↗</a><br>` : '';
+  const imgHtml = it.image ? `<img class="thumb" src="${escapeHtml(it.image)}" alt="">` : '';
+  return `
+  <div class="item">
+    <div class="item-top">
+      <div class="tags">
+        ${typeTag}
+        <span class="tag status" style="background:${statusBg}; color:${statusColor}"><span class="dot" style="background:${statusColor}"></span>${it.status}</span>
+      </div>
+      <button class="del-btn" onclick="removeItem('${kind}','${it.id}')">🗑</button>
+    </div>
+    ${imgHtml}
+    <h4 class="serif">${escapeHtml(it.title)}</h4>
+    <div class="meta">${meta}</div>
+    ${linkHtml}
+    <div class="item-actions">
+      <button class="small-btn" onclick="toggleStatus('${kind}','${it.id}')">${it.status==='publié' ? 'Dépublier' : 'Publier'}</button>
+      <div class="share-wrap">
+        <button class="small-btn" onclick="toggleShareMenu('${it.id}')">🔗 Partager ▾</button>
+        <div class="share-menu" id="share-${it.id}">
+          <button onclick="shareTo('facebook','${kind}','${it.id}')">Facebook</button>
+          <button onclick="shareTo('linkedin','${kind}','${it.id}')">LinkedIn</button>
+          <button onclick="shareTo('x','${kind}','${it.id}')">X (Twitter)</button>
+          <button onclick="shareTo('whatsapp','${kind}','${it.id}')">WhatsApp</button>
+          <hr>
+          <button class="copy-btn" onclick="copyForNewsletter('${kind}','${it.id}')">📋 Copier pour Brevo</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function findItem(kind, id){
+  const arr = kind==='pubs' ? state.pubs : state.podcasts;
+  return arr.find(it => it.id === id);
+}
+
+function toggleStatus(kind, id){
+  const it = findItem(kind, id);
+  it.status = it.status === 'publié' ? 'brouillon' : 'publié';
+  persist();
+  renderList();
+}
+
+function removeItem(kind, id){
+  if(kind==='pubs') state.pubs = state.pubs.filter(it => it.id !== id);
+  else state.podcasts = state.podcasts.filter(it => it.id !== id);
+  persist();
+  renderList();
+  document.getElementById(kind==='pubs' ? 'pub-total' : 'pod-total').textContent = (kind==='pubs' ? state.pubs.length : state.podcasts.length);
+  showToast('Supprimé');
+}
+
+function toggleShareMenu(id){
+  document.querySelectorAll('.share-menu').forEach(el => {
+    if(el.id !== 'share-'+id) el.classList.remove('open');
+  });
+  document.getElementById('share-'+id).classList.toggle('open');
+}
+document.addEventListener('click', (e)=>{
+  if(!e.target.closest('.share-wrap')){
+    document.querySelectorAll('.share-menu').forEach(el => el.classList.remove('open'));
+  }
+});
+
+function shareTo(network, kind, id){
+  const it = findItem(kind, id);
+  const url = `${SITE_URL}/${kind}/${it.id}`;
+  const text = it.title;
+  let target = '';
+  if(network==='facebook') target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+  if(network==='linkedin') target = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+  if(network==='x') target = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+  if(network==='whatsapp') target = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+  window.open(target, '_blank', 'noopener,noreferrer,width=600,height=650');
+  document.getElementById('share-'+id).classList.remove('open');
+}
+
+async function copyForNewsletter(kind, id){
+  const it = findItem(kind, id);
+  const url = `${SITE_URL}/${kind}/${it.id}`;
+  const body = kind==='pubs'
+    ? `${it.title}\n\n${it.excerpt||''}\n\nLire la suite : ${url}`
+    : `Nouvel épisode : ${it.title}\n\n${it.description||''}\n\nÉcouter : ${it.link || url}`;
+  try{
+    await navigator.clipboard.writeText(body);
+    showToast('Copié — collez-le dans Brevo');
+  }catch(e){
+    showToast('Copie impossible sur ce navigateur');
+  }
+  document.getElementById('share-'+id).classList.remove('open');
+}
+
+/* ---------------- STATISTIQUES ---------------- */
+let _charts = {};
+
+function statsHtml(){
+  const total = state.pubs.length;
+  const published = state.pubs.filter(p => p.status === 'publié').length;
+  const drafts = total - published;
+  const podTotal = state.podcasts.length;
+  return `
+  <div class="stat-cards">
+    <div class="stat-card"><div class="num">${total}</div><div class="lbl">Publications</div></div>
+    <div class="stat-card"><div class="num">${published}</div><div class="lbl">Publiées</div></div>
+    <div class="stat-card"><div class="num">${drafts}</div><div class="lbl">Brouillons</div></div>
+    <div class="stat-card"><div class="num">${podTotal}</div><div class="lbl">Épisodes podcast</div></div>
+  </div>
+  <div class="charts-grid">
+    <div class="chart-card"><h4>Publications par domaine</h4><canvas id="chart-domain"></canvas></div>
+    <div class="chart-card"><h4>Répartition par type</h4><canvas id="chart-type"></canvas></div>
+    <div class="chart-card full"><h4>Publications par mois</h4><canvas id="chart-time"></canvas></div>
+  </div>
+  ${total === 0 ? '<p style="margin-top:16px; font-size:13px; color:var(--ink-soft); opacity:0.6;">Les graphiques se remplissent au fur et à mesure que vous publiez.</p>' : ''}
+  `;
+}
+
+function destroyCharts(){
+  Object.values(_charts).forEach(c => c && c.destroy());
+  _charts = {};
+}
+
+function drawCharts(){
+  destroyCharts();
+  if(typeof Chart === 'undefined') return;
+
+  const goldBright = '#E9B94A', green = '#1B7340', red = '#B3122E', ink = '#0E1B2B', gold = '#C99A3D', inkSoft='#1C2E45';
+  const palette = [green, red, goldBright, ink, gold, inkSoft, '#6FA8DC', '#8E7CC3', '#D5A6BD', '#93C47D', '#E06666', '#76A5AF', '#F6B26B', '#B4A7D6', '#A2C4C9'];
+
+  // Par domaine
+  const domainCounts = {};
+  state.pubs.forEach(p => { domainCounts[p.domain] = (domainCounts[p.domain]||0) + 1; });
+  const domainLabels = Object.keys(domainCounts);
+  const domainData = Object.values(domainCounts);
+  _charts.domain = new Chart(document.getElementById('chart-domain'), {
+    type: 'bar',
+    data: { labels: domainLabels, datasets: [{ data: domainData, backgroundColor: green, borderRadius: 4 }] },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: { x: { ticks: { precision: 0 } } }
+    }
+  });
+
+  // Par type
+  const typeCounts = {};
+  state.pubs.forEach(p => { typeCounts[p.type] = (typeCounts[p.type]||0) + 1; });
+  _charts.type = new Chart(document.getElementById('chart-type'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(typeCounts),
+      datasets: [{ data: Object.values(typeCounts), backgroundColor: palette }]
+    },
+    options: { plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } } } }
+  });
+
+  // Par mois
+  const monthCounts = {};
+  state.pubs.forEach(p => {
+    const d = p.dateISO ? new Date(p.dateISO) : null;
+    const key = d ? `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}` : 'Non daté';
+    monthCounts[key] = (monthCounts[key]||0) + 1;
+  });
+  const monthKeys = Object.keys(monthCounts).sort();
+  const monthLabels = monthKeys.map(k => {
+    if(k === 'Non daté') return k;
+    const [y,m] = k.split('-');
+    return new Date(y, m-1, 1).toLocaleDateString('fr-FR', {month:'short', year:'numeric'});
+  });
+  _charts.time = new Chart(document.getElementById('chart-time'), {
+    type: 'bar',
+    data: { labels: monthLabels, datasets: [{ data: monthKeys.map(k=>monthCounts[k]), backgroundColor: goldBright, borderRadius: 4 }] },
+    options: { plugins: { legend: { display: false } }, scales: { y: { ticks: { precision: 0 } } } }
+  });
+}
+
+/* init */
+persist();
+render();
+</script>
+</body>
+</html>
