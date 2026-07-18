@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Éveil — Diplômés et sans emploi : le vrai coût de l'inadéquation entre formation et marché du travail</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2B; --ink-soft:#1C2E45;
+    --paper:#F7F2E7; --paper-dim:#EFE7D6;
+    --green:#1B7340; --red:#B3122E;
+    --gold:#C99A3D; --gold-bright:#E9B94A;
+    --line: rgba(14,27,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.7;}
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,242,231,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:40px; width:40px; border-radius:50%; object-fit:cover;}
+  .brand-name{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .back{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em;
+    border:1px solid var(--ink); padding:9px 16px; border-radius:999px;
+  }
+  .back:hover{background:var(--ink); color:var(--paper);}
+
+  header.hero{
+    background:radial-gradient(120% 90% at 82% -10%, #24405c 0%, var(--ink) 45%, #08121d 100%);
+    color:var(--paper); padding:60px 0 50px;
+  }
+  .tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.06em; padding:5px 12px; border-radius:999px; background:rgba(27,115,64,0.22); color:#6FCB9B;
+    margin-bottom:16px;
+  }
+  header.hero h1{font-family:'Fraunces', serif; font-size:clamp(26px,4vw,38px); font-weight:500; max-width:620px; line-height:1.25;}
+  .meta-line{margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:#B7C0CB;}
+  .flag-strip{height:5px; display:flex;}
+  .flag-strip span{flex:1;}
+  .flag-strip .g{background:var(--green);} .flag-strip .r{background:var(--red);} .flag-strip .y{background:var(--gold-bright);}
+
+  article{padding:52px 0 80px;}
+  article p{margin-bottom:20px; font-size:16.5px; color:var(--ink-soft);}
+  article h2{
+    font-family:'Fraunces', serif; font-weight:500; font-size:21px; color:var(--ink);
+    margin:38px 0 14px;
+  }
+  .lead{font-size:18px; color:var(--ink); font-weight:500;}
+  .note{
+    margin-top:36px; padding:18px 20px; border-left:3px solid var(--gold); background:var(--paper-dim);
+    font-size:13.5px; color:var(--ink-soft); font-style:italic; border-radius:0 8px 8px 0;
+  }
+  .share-row{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin:36px 0 8px; padding-top:18px; border-top:1px solid var(--line);
+  }
+  .share-row .share-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); opacity:0.7;}
+  .share-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink);
+    border:1px solid var(--line); padding:5px 12px; border-radius:999px;
+    text-decoration:none; transition:all .2s;
+  }
+  .share-row a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+
+  footer{background:#08121D; color:#8996A5; padding:36px 0; text-align:center; font-size:12.5px;}
+  footer a{color:#B7C0CB;}
+
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Logo L'Éveil">
+      <span class="brand-name">L'Éveil</span>
+    </div>
+    <a href="index.html" class="back">← Retour à l'accueil</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">Tribune · Emploi des jeunes</span>
+    <h1>Diplômés et sans emploi : le vrai coût de l'inadéquation entre formation et marché du travail</h1>
+    <div class="meta-line">Par le fondateur · 2026 · 5 min de lecture</div>
+  </div>
+</header>
+<div class="flag-strip"><span class="g"></span><span class="r"></span><span class="y"></span></div>
+
+<article class="wrap">
+  <p class="lead">Chaque année, des milliers de jeunes Camerounais sortent de l'université ou d'une grande école avec un diplôme en poche et une promesse implicite : celle d'un avenir meilleur. Chaque année, une part importante d'entre eux découvre que ce diplôme, censé être un passeport, ne leur ouvre aucune porte. Ils ne manquent ni de courage, ni de discipline, ni d'ambition. Ce qui leur manque, c'est un système qui les a formés pour un marché du travail qui n'existe pas.</p>
+  <h2>Un diagnostic que l'on refuse de poser clairement</h2>
+  <p>Le discours dominant sur le chômage des jeunes diplômés s'arrête trop souvent à un constat moral : il y aurait trop de diplômés, pas assez motivés, mal préparés à « l'esprit d'entreprise ». Ce discours a le mérite de la simplicité et le défaut d'être largement faux. Le problème n'est pas que nous formons trop de jeunes. C'est que nous les formons pour des emplois que notre économie ne crée pas, dans des filières que le marché ne demande pas, avec des compétences que les employeurs jugent insuffisantes dès le premier entretien.</p>
+  <p>Un système éducatif peut être rigoureux sur le papier — programmes chargés, examens sélectifs, diplômes reconnus — et rester profondément déconnecté des besoins réels de l'économie. C'est le cas lorsque les filières les plus demandées par les étudiants ne sont pas celles où l'économie a besoin de bras et de cerveaux. C'est le cas lorsque la pédagogie reste essentiellement théorique, sans stage véritable, sans projet concret, sans contact avec les entreprises qui, plus tard, sont censées embaucher ces mêmes étudiants.</p>
+  <h2>Le vrai coût, au-delà du chiffre du chômage</h2>
+  <p>Le coût de cette inadéquation ne se mesure pas seulement en taux de chômage des jeunes diplômés. Il se mesure aussi dans ce que l'économiste appellerait un gâchis de capital humain : des années de formation, des ressources familiales souvent considérables, une énergie et une motivation réelles, qui ne trouvent aucun débouché productif. Il se mesure dans le nombre de jeunes qui finissent par occuper des emplois sans aucun rapport avec leur formation, ou qui grossissent le secteur informel faute d'alternative. Il se mesure, enfin, dans la confiance perdue : celle d'une génération qui a fait ce qu'on lui demandait — étudier, obtenir un diplôme — et qui se sent trahie par le contrat implicite qu'on lui avait vendu.</p>
+  <h2>Ce que cela dit de notre système éducatif</h2>
+  <p>Cette situation n'est pas une fatalité climatique, c'est le résultat de choix — ou de l'absence de choix. Un système éducatif qui ne dialogue pas structurellement avec le monde économique ne peut pas, par construction, produire des diplômés employables en nombre suffisant. Cela suppose des mécanismes concrets qui manquent aujourd'hui à l'échelle nécessaire : des filières professionnelles et techniques valorisées à égalité avec les filières générales, des stages obligatoires et réellement encadrés, une capacité des universités à faire évoluer leurs programmes au rythme des besoins du marché plutôt qu'au rythme de la bureaucratie académique, et une meilleure information des jeunes sur les débouchés réels avant qu'ils ne choisissent leur filière plutôt qu'après.</p>
+  <h2>Sortir du blâme, entrer dans la réforme</h2>
+  <p>Il est plus facile de dire aux jeunes de « faire preuve d'initiative » que de réformer un système de formation professionnelle sous-financé, une orientation scolaire quasi inexistante, et des liens quasi nuls entre universités et secteur privé. Mais c'est précisément ce travail de réforme structurelle qui manque. Il exige d'accepter une vérité inconfortable : le problème n'est pas la jeunesse, c'est l'architecture qui est censée la préparer à l'emploi.</p>
+  <p>Nous croyons qu'il est encore possible de recoudre ce lien entre formation et marché du travail — à condition de cesser de le nier. C'est le sens du travail que nous voulons mener : documenter précisément où se situent les ruptures, comparer ce qui fonctionne ailleurs, et proposer des réformes concrètes plutôt que des slogans sur le mérite individuel.</p>
+  <div class="note">Cette tribune ouvre un chantier que L'Éveil suivra dans la durée : l'adéquation entre formation et emploi au Cameroun. Elle sera suivie de contributions plus approfondies à mesure que notre réseau d'experts se constitue.</div>
+  <div class="share-row">
+    <span class="share-label">Partager cette tribune</span>
+    <a href="#" onclick="shareIt('facebook'); return false;">Facebook</a>
+    <a href="#" onclick="shareIt('linkedin'); return false;">LinkedIn</a>
+    <a href="#" onclick="shareIt('x'); return false;">X</a>
+    <a href="#" onclick="shareIt('whatsapp'); return false;">WhatsApp</a>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">© 2026 L'Éveil — <a href="index.html">Retour à l'accueil</a> · <a href="contact.html">Contact</a></div>
+</footer>
+
+<script>
+  function shareIt(network){
+    const url = location.href;
+    const text = "Diplômés et sans emploi : le vrai coût de l\'inadéquation entre formation et marché du travail — L'Éveil";
+    let target = '';
+    if(network === 'facebook') target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    if(network === 'linkedin') target = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    if(network === 'x') target = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    if(network === 'whatsapp') target = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+    window.open(target, '_blank', 'noopener,noreferrer,width=600,height=650');
+  }
+</script>
+
+</body>
+</html>
