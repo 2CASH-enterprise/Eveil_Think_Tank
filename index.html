@@ -401,7 +401,7 @@
       <div class="eyebrow">Notre conviction</div>
       <h2 style="font-size:32px; margin-bottom:22px; max-width:420px;">Le développement d'une nation commence toujours par le développement des idées.</h2>
       <p class="body-lg">Le Cameroun dispose d'immenses ressources humaines, naturelles et culturelles. Notre ambition n'est pas de commenter l'actualité politique quotidienne, mais de contribuer à réveiller les consciences et produire des propositions capables d'inspirer les politiques de développement du pays.</p>
-      <a href="#" class="btn btn-ghost" style="margin-top:8px;">Lire le document fondateur →</a>
+      <a href="document-fondateur.html" class="btn btn-ghost" style="margin-top:8px;">Lire le document fondateur →</a>
     </div>
     <div class="pull">
       « Nous croyons que le Cameroun possède les talents nécessaires pour écrire une nouvelle page de son histoire. »
@@ -514,8 +514,8 @@
     <div class="news-form">
       <label for="em">Votre adresse e-mail</label>
       <input type="email" id="em" placeholder="vous@exemple.com">
-      <button type="button">S'abonner à la newsletter</button>
-      <p class="fine">En vous inscrivant, vous acceptez de recevoir les publications de L'Éveil. Désinscription possible à tout moment.</p>
+      <button type="button" id="news-btn" onclick="subscribeNewsletter()">S'abonner à la newsletter</button>
+      <p class="fine" id="news-fine">En vous inscrivant, vous acceptez de recevoir les publications de L'Éveil. Désinscription possible à tout moment.</p>
     </div>
   </div>
 </section>
@@ -545,8 +545,8 @@
       </div>
       <div class="foot-col">
         <h5>Institution</h5>
-        <a href="#">Nous rejoindre</a>
-        <a href="#">Contact</a>
+        <a href="contact.html?sujet=contributeur">Nous rejoindre</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="foot-col">
         <h5>Suivez-nous</h5>
@@ -593,6 +593,31 @@
     bar.style.height = h+'px';
     if(i<12) bar.classList.add('on');
     wave.appendChild(bar);
+  }
+
+  // Newsletter signup (client-side demo: validates + stores locally until Brevo is connected)
+  function subscribeNewsletter(){
+    const input = document.getElementById('em');
+    const btn = document.getElementById('news-btn');
+    const fine = document.getElementById('news-fine');
+    const email = input.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(!valid){
+      fine.textContent = "Merci d'indiquer une adresse e-mail valide.";
+      fine.style.color = '#E9B94A';
+      input.focus();
+      return;
+    }
+    try{
+      const list = JSON.parse(localStorage.getItem('leveil_newsletter_signups') || '[]');
+      list.push({ email, date: new Date().toISOString() });
+      localStorage.setItem('leveil_newsletter_signups', JSON.stringify(list));
+    }catch(e){ /* stockage indisponible, on continue quand même */ }
+    input.value = '';
+    btn.textContent = 'Inscrit ✓';
+    fine.textContent = 'Merci ! Vous recevrez nos prochaines publications par e-mail.';
+    fine.style.color = '#DCEEDF';
+    setTimeout(() => { btn.textContent = "S'abonner à la newsletter"; }, 3000);
   }
 </script>
 
