@@ -230,6 +230,21 @@
     font-family:'IBM Plex Mono', monospace; font-size:11px; color:#71818F;
     border-top:1px solid rgba(247,242,231,0.08); padding-top:16px;
   }
+  .share-row{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin-top:14px; padding-top:14px; border-top:1px solid rgba(247,242,231,0.08);
+  }
+  .share-row .share-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; color:#71818F;}
+  .share-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:#B7C0CB;
+    border:1px solid rgba(247,242,231,0.15); padding:4px 10px; border-radius:999px;
+    text-decoration:none; transition:all .2s;
+  }
+  .share-row a:hover{background:var(--gold-bright); color:var(--ink); border-color:var(--gold-bright);}
+  .share-row.on-light{border-top-color:var(--line);}
+  .share-row.on-light .share-label{color:var(--ink-soft); opacity:0.7;}
+  .share-row.on-light a{color:var(--ink); border-color:var(--line);}
+  .share-row.on-light a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
 
   /* ---------- PODCAST ---------- */
   .podcast-section{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;}
@@ -445,18 +460,39 @@
         <h3>Industrialisation locale : les leviers d'une transformation structurelle</h3>
         <p>Comment orienter la politique industrielle camerounaise vers une montée en valeur ajoutée durable.</p>
         <div class="pub-meta"><span>N° 001 · 2026</span><span>6 min</span></div>
+        <div class="share-row">
+          <span class="share-label">Partager</span>
+          <a href="#" onclick="shareIt('facebook', location.origin+location.pathname+'#publications', 'Industrialisation locale : les leviers d\'une transformation structurelle — L\'Éveil'); return false;">Facebook</a>
+          <a href="#" onclick="shareIt('linkedin', location.origin+location.pathname+'#publications', 'Industrialisation locale : les leviers d\'une transformation structurelle — L\'Éveil'); return false;">LinkedIn</a>
+          <a href="#" onclick="shareIt('x', location.origin+location.pathname+'#publications', 'Industrialisation locale : les leviers d\'une transformation structurelle — L\'Éveil'); return false;">X</a>
+          <a href="#" onclick="shareIt('whatsapp', location.origin+location.pathname+'#publications', 'Industrialisation locale : les leviers d\'une transformation structurelle — L\'Éveil'); return false;">WhatsApp</a>
+        </div>
       </div>
       <div class="pub-card">
         <span class="pub-tag tag-policy">Policy paper</span>
         <h3>Jeunesse et emploi : repenser les politiques d'insertion</h3>
         <p>Recommandations opérationnelles pour connecter formation et marché du travail.</p>
         <div class="pub-meta"><span>N° 002 · 2026</span><span>9 min</span></div>
+        <div class="share-row">
+          <span class="share-label">Partager</span>
+          <a href="#" onclick="shareIt('facebook', location.origin+location.pathname+'#publications', 'Jeunesse et emploi : repenser les politiques d\'insertion — L\'Éveil'); return false;">Facebook</a>
+          <a href="#" onclick="shareIt('linkedin', location.origin+location.pathname+'#publications', 'Jeunesse et emploi : repenser les politiques d\'insertion — L\'Éveil'); return false;">LinkedIn</a>
+          <a href="#" onclick="shareIt('x', location.origin+location.pathname+'#publications', 'Jeunesse et emploi : repenser les politiques d\'insertion — L\'Éveil'); return false;">X</a>
+          <a href="#" onclick="shareIt('whatsapp', location.origin+location.pathname+'#publications', 'Jeunesse et emploi : repenser les politiques d\'insertion — L\'Éveil'); return false;">WhatsApp</a>
+        </div>
       </div>
       <div class="pub-card">
         <span class="pub-tag tag-rapport">Rapport fondateur</span>
         <h3>État des lieux : le potentiel inexploité du Cameroun</h3>
         <p>Le rapport de lancement de L'Éveil, cadre de référence de nos travaux à venir.</p>
         <div class="pub-meta"><span>N° 000 · 2026</span><span>22 min</span></div>
+        <div class="share-row">
+          <span class="share-label">Partager</span>
+          <a href="#" onclick="shareIt('facebook', new URL('document-fondateur.html', location.href).href, 'Le développement d\'une nation commence toujours par le développement des idées — L\'Éveil'); return false;">Facebook</a>
+          <a href="#" onclick="shareIt('linkedin', new URL('document-fondateur.html', location.href).href, 'Le développement d\'une nation commence toujours par le développement des idées — L\'Éveil'); return false;">LinkedIn</a>
+          <a href="#" onclick="shareIt('x', new URL('document-fondateur.html', location.href).href, 'Le développement d\'une nation commence toujours par le développement des idées — L\'Éveil'); return false;">X</a>
+          <a href="#" onclick="shareIt('whatsapp', new URL('document-fondateur.html', location.href).href, 'Le développement d\'une nation commence toujours par le développement des idées — L\'Éveil'); return false;">WhatsApp</a>
+        </div>
       </div>
     </div>
   </div>
@@ -479,6 +515,13 @@
       <div class="player-controls">
         <div class="play-btn"><svg viewBox="0 0 24 24" fill="#0E1B2B"><path d="M8 5v14l11-7z"/></svg></div>
         <span class="time">04:12 / 38:20</span>
+      </div>
+      <div class="share-row">
+        <span class="share-label">Partager</span>
+        <a href="#" onclick="shareIt('facebook', location.origin+location.pathname+'#podcast', 'Épisode 01 — Décrypter la décentralisation — Le podcast de L\'Éveil'); return false;">Facebook</a>
+        <a href="#" onclick="shareIt('linkedin', location.origin+location.pathname+'#podcast', 'Épisode 01 — Décrypter la décentralisation — Le podcast de L\'Éveil'); return false;">LinkedIn</a>
+        <a href="#" onclick="shareIt('x', location.origin+location.pathname+'#podcast', 'Épisode 01 — Décrypter la décentralisation — Le podcast de L\'Éveil'); return false;">X</a>
+        <a href="#" onclick="shareIt('whatsapp', location.origin+location.pathname+'#podcast', 'Épisode 01 — Décrypter la décentralisation — Le podcast de L\'Éveil'); return false;">WhatsApp</a>
       </div>
       <div class="ep-list">
         <div class="ep-list-row"><span>02 — Financer l'agriculture autrement</span><span>34:10</span></div>
@@ -593,6 +636,16 @@
     bar.style.height = h+'px';
     if(i<12) bar.classList.add('on');
     wave.appendChild(bar);
+  }
+
+  // Partage réseaux sociaux (ouvre de vraies fenêtres de partage)
+  function shareIt(network, url, text){
+    let target = '';
+    if(network === 'facebook') target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    if(network === 'linkedin') target = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    if(network === 'x') target = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    if(network === 'whatsapp') target = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+    window.open(target, '_blank', 'noopener,noreferrer,width=600,height=650');
   }
 
   // Newsletter signup (client-side demo: validates + stores locally until Brevo is connected)
