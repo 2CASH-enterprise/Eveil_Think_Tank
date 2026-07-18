@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Éveil — Contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2B; --ink-soft:#1C2E45;
+    --paper:#F7F2E7; --paper-dim:#EFE7D6;
+    --green:#1B7340; --red:#B3122E;
+    --gold:#C99A3D; --gold-bright:#E9B94A;
+    --line: rgba(14,27,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 28px;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,242,231,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:40px; width:40px; border-radius:50%; object-fit:cover;}
+  .brand-name{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .back{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em;
+    border:1px solid var(--ink); padding:9px 16px; border-radius:999px;
+  }
+  .back:hover{background:var(--ink); color:var(--paper);}
+
+  header.hero{
+    background:radial-gradient(120% 90% at 82% -10%, #24405c 0%, var(--ink) 45%, #08121d 100%);
+    color:var(--paper); padding:58px 0 46px; text-align:center;
+  }
+  header.hero .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:14px;}
+  header.hero h1{font-family:'Fraunces', serif; font-size:clamp(26px,4vw,36px); font-weight:500;}
+  header.hero p{margin-top:12px; color:#C9D2DC; font-size:15px;}
+  .flag-strip{height:5px; display:flex;}
+  .flag-strip span{flex:1;}
+  .flag-strip .g{background:var(--green);} .flag-strip .r{background:var(--red);} .flag-strip .y{background:var(--gold-bright);}
+
+  main{padding:52px 0 90px;}
+  .card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:34px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block; font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:7px;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:11px 14px; border:1px solid var(--line); border-radius:8px; font-size:14.5px; font-family:'Inter', sans-serif; background:var(--paper);
+  }
+  .field textarea{resize:vertical; line-height:1.6;}
+  .submit-btn{
+    width:100%; padding:14px; border:none; border-radius:8px; background:var(--ink); color:var(--paper);
+    font-weight:600; font-size:14.5px; cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:hover{background:var(--ink-soft);}
+  .submit-btn:disabled{opacity:0.6; cursor:default;}
+  .status{
+    margin-top:16px; padding:12px 14px; border-radius:8px; font-size:13.5px; display:none;
+  }
+  .status.ok{display:block; background:rgba(27,115,64,0.12); color:var(--green);}
+  .status.err{display:block; background:rgba(179,18,46,0.1); color:var(--red);}
+  .setup-note{
+    margin-top:22px; font-size:12px; color:var(--ink-soft); opacity:0.65; line-height:1.6;
+  }
+
+  footer{background:#08121D; color:#8996A5; padding:36px 0; text-align:center; font-size:12.5px;}
+  footer a{color:#B7C0CB;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Logo L'Éveil">
+      <span class="brand-name">L'Éveil</span>
+    </div>
+    <a href="index.html" class="back">← Retour à l'accueil</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h1>Une question, une proposition, l'envie de contribuer ?</h1>
+    <p>Écrivez-nous — nous répondons personnellement à chaque message.</p>
+  </div>
+</header>
+<div class="flag-strip"><span class="g"></span><span class="r"></span><span class="y"></span></div>
+
+<main class="wrap">
+  <div class="card">
+    <form id="contact-form">
+      <div class="field">
+        <label for="nom">Nom</label>
+        <input type="text" id="nom" name="name" required placeholder="Votre nom">
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required placeholder="vous@exemple.com">
+      </div>
+      <div class="field">
+        <label for="sujet">Sujet</label>
+        <select id="sujet" name="sujet">
+          <option value="Question générale">Question générale</option>
+          <option value="Devenir contributeur">Devenir contributeur</option>
+          <option value="Presse / média">Presse / média</option>
+          <option value="Partenariat">Partenariat</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required placeholder="Votre message…"></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="submit-btn">Envoyer le message</button>
+      <div class="status" id="status"></div>
+    </form>
+    <p class="setup-note" id="setup-note"></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 L'Éveil — <a href="index.html">Retour à l'accueil</a> · <a href="document-fondateur.html">Document fondateur</a></div>
+</footer>
+
+<script>
+  // Pré-remplir le sujet si on arrive avec ?sujet=contributeur (lien "Nous rejoindre")
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('sujet') === 'contributeur'){
+    document.getElementById('sujet').value = 'Devenir contributeur';
+  }
+
+  // ⚠️ Remplacez FORMSPREE_ID ci-dessous par votre propre identifiant Formspree
+  // (créez un compte gratuit sur https://formspree.io, ajoutez un formulaire, copiez son ID)
+  const FORMSPREE_ID = 'VOTRE_ID_FORMSPREE';
+  const ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
+  const isConfigured = FORMSPREE_ID !== 'VOTRE_ID_FORMSPREE';
+
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('status');
+  const btn = document.getElementById('submit-btn');
+  const note = document.getElementById('setup-note');
+
+  if(!isConfigured){
+    note.textContent = "Configuration en attente : ce formulaire nécessite un identifiant Formspree (gratuit, sans carte bancaire) pour envoyer réellement les messages. Voir les instructions fournies pour l'activer.";
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.className = 'status';
+    status.textContent = '';
+
+    if(!isConfigured){
+      status.className = 'status err';
+      status.textContent = "Le formulaire n'est pas encore connecté à un service d'envoi. Contactez l'administrateur du site.";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if(res.ok){
+        status.className = 'status ok';
+        status.textContent = 'Message envoyé — merci, nous vous répondrons rapidement.';
+        form.reset();
+      } else {
+        status.className = 'status err';
+        status.textContent = "L'envoi a échoué. Réessayez ou écrivez-nous directement par e-mail.";
+      }
+    } catch(err){
+      status.className = 'status err';
+      status.textContent = "L'envoi a échoué (connexion). Réessayez ou écrivez-nous directement par e-mail.";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Envoyer le message';
+    }
+  });
+</script>
+
+</body>
+</html>
