@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Éveil — Document fondateur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2B; --ink-soft:#1C2E45;
+    --paper:#F7F2E7; --paper-dim:#EFE7D6;
+    --green:#1B7340; --red:#B3122E;
+    --gold:#C99A3D; --gold-bright:#E9B94A;
+    --line: rgba(14,27,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.7;}
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,242,231,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:40px; width:40px; border-radius:50%; object-fit:cover;}
+  .brand-name{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .back{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em;
+    border:1px solid var(--ink); padding:9px 16px; border-radius:999px;
+  }
+  .back:hover{background:var(--ink); color:var(--paper);}
+
+  header.hero{
+    background:radial-gradient(120% 90% at 82% -10%, #24405c 0%, var(--ink) 45%, #08121d 100%);
+    color:var(--paper); padding:64px 0 54px;
+  }
+  header.hero .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:14px;}
+  header.hero h1{font-family:'Fraunces', serif; font-size:clamp(28px,4vw,42px); font-weight:500; max-width:600px; line-height:1.2;}
+  .flag-strip{height:5px; display:flex;}
+  .flag-strip span{flex:1;}
+  .flag-strip .g{background:var(--green);} .flag-strip .r{background:var(--red);} .flag-strip .y{background:var(--gold-bright);}
+
+  article{padding:56px 0 90px;}
+  article p{margin-bottom:20px; font-size:16.5px; color:var(--ink-soft);}
+  article h2{
+    font-family:'Fraunces', serif; font-weight:500; font-size:22px; color:var(--ink);
+    margin:44px 0 16px; padding-top:6px; border-top:1px solid var(--line);
+  }
+  article h2:first-of-type{border-top:none; margin-top:36px;}
+  .lead{font-size:18px; color:var(--ink); font-weight:500;}
+  .motto{
+    margin-top:52px; padding:28px; border-radius:12px; text-align:center;
+    background:var(--ink); color:var(--paper);
+    font-family:'Fraunces', serif; font-size:18px; font-style:italic;
+  }
+
+  footer{background:#08121D; color:#8996A5; padding:36px 0; text-align:center; font-size:12.5px;}
+  footer a{color:#B7C0CB;}
+
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Logo L'Éveil">
+      <span class="brand-name">L'Éveil</span>
+    </div>
+    <a href="index.html" class="back">← Retour à l'accueil</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Document fondateur</div>
+    <h1>Le développement d'une nation commence toujours par le développement des idées</h1>
+  </div>
+</header>
+<div class="flag-strip"><span class="g"></span><span class="r"></span><span class="y"></span></div>
+
+<article class="wrap">
+  <p class="lead">Le Cameroun dispose d'immenses ressources humaines, naturelles et culturelles. Notre ambition n'est pas de commenter l'actualité politique quotidienne, mais de contribuer à réveiller les consciences et produire des propositions capables d'inspirer les politiques de développement du pays.</p>
+
+  <p>Depuis plusieurs décennies, le débat public camerounais se cherche. Il est trop souvent réduit à la polarisation, à la réaction émotionnelle, à l'analyse de surface. Les espaces où des citoyens, des chercheurs, des entrepreneurs et des décideurs peuvent produire ensemble une réflexion rigoureuse, indépendante et constructive demeurent rares. Pendant ce temps, une partie importante de la jeunesse camerounaise s'installe dans le découragement. Beaucoup ne croient plus en la capacité des institutions à transformer durablement le pays.</p>
+
+  <p>Nous ne partageons pas ce renoncement. Chaque génération porte la responsabilité d'imaginer l'avenir qu'elle souhaite construire, et rien n'oblige la nôtre à hériter du fatalisme plutôt que de la lucidité.</p>
+
+  <p>C'est de cette conviction qu'est né L'Éveil.</p>
+
+  <h2>Une conviction simple</h2>
+  <p>Les grandes transformations économiques et sociales ne naissent pas du hasard. Elles sont, presque toujours, le fruit d'une vision, d'une réflexion collective et de décisions éclairées par un travail préalable d'analyse. Aucun pays ne s'est développé en improvisant ses choix publics sur la seule base de l'urgence ou de l'intuition.</p>
+  <p>Nous croyons que le Cameroun possède les talents nécessaires pour écrire une nouvelle page de son histoire. Ce qui lui manque n'est pas le potentiel, mais les espaces où ce potentiel peut se rencontrer : des lieux où des talents dispersés — dans les universités, dans l'administration, dans l'entrepreneuriat, dans la diaspora — peuvent dialoguer, confronter leurs analyses, et transformer des intuitions isolées en propositions solides.</p>
+  <p>L'Éveil veut être l'un de ces espaces.</p>
+
+  <h2>Notre mission</h2>
+  <p>Produire des recherches indépendantes, des analyses rigoureuses et des recommandations concrètes, afin de contribuer au développement économique, social, institutionnel et technologique du Cameroun.</p>
+  <p>Cette mission repose sur une méthode simple et exigeante à la fois : observer les réalités du terrain avant de les commenter, analyser en mobilisant les données disponibles et les comparaisons internationales pertinentes, proposer des recommandations réalistes et adaptées au contexte camerounais plutôt que des idéaux importés sans discernement, puis diffuser ce travail largement pour qu'il nourrisse effectivement le débat public — et non les seuls cercles qui l'ont produit.</p>
+
+  <h2>Pourquoi ce nom</h2>
+  <p>L'Éveil désigne le moment où une société prend pleinement conscience de son potentiel. Il porte en lui plusieurs réveils à la fois : celui des consciences, celui de l'engagement citoyen, celui de l'exigence intellectuelle, celui de la confiance dans nos propres capacités, celui de l'espoir tout simplement.</p>
+  <p>Nous ne cherchons pas seulement à informer. Nous voulons inspirer — c'est-à-dire donner à celles et ceux qui nous lisent des raisons construites, argumentées, de croire qu'un autre chemin de développement est possible, et de s'y engager.</p>
+
+  <h2>Ce que nous ne sommes pas</h2>
+  <p>L'Éveil n'est pas un projet personnel. Ce n'est pas un mouvement politique. Ce n'est pas un média d'actualité. C'est une institution que nous voulons bâtir dans la durée, capable de produire des idées, d'encourager le débat, de faire émerger des talents, et de contribuer — avec humilité mais avec détermination — au développement du Cameroun.</p>
+  <p>Nos valeurs guident ce travail à chaque étape : l'indépendance intellectuelle, qui garantit que nos conclusions ne sont dictées par aucun intérêt partisan ; l'excellence scientifique et l'objectivité, qui exigent que nos analyses résistent à l'examen critique ; l'intégrité, qui interdit toute concession sur la rigueur au nom de la popularité d'une idée ; l'innovation et l'esprit critique, qui nous poussent à questionner les évidences reçues ; le dialogue et la responsabilité, qui nous obligent à construire avec d'autres plutôt que contre eux ; et l'espoir, sans lequel aucune de ces exigences n'aurait de sens.</p>
+
+  <h2>Nos premiers chantiers</h2>
+  <p>Dans un premier temps, nos travaux porteront notamment sur la gouvernance publique, le développement économique, l'industrialisation, l'agriculture, l'éducation, la santé, l'innovation, l'intelligence artificielle, la transformation numérique, l'énergie, l'emploi des jeunes, l'entrepreneuriat, la diaspora, la décentralisation et l'intégration africaine. Cette liste n'est pas exhaustive ; elle définit un point de départ, appelé à s'enrichir au rythme de nos travaux et des contributions de notre réseau d'experts.</p>
+
+  <h2>Une communauté avant une institution</h2>
+  <p>L'Éveil a vocation à rassembler progressivement universitaires, économistes, juristes, entrepreneurs, chercheurs, hauts fonctionnaires, experts internationaux et membres de la diaspora, pour fonctionner comme une véritable communauté d'intelligence collective. Cette communauté ne se décrète pas : elle se construit, publication après publication, échange après échange, à mesure que la rigueur de notre travail justifie la confiance de celles et ceux que nous invitons à le rejoindre.</p>
+  <p>Nous croyons que les grandes transformations commencent toujours par une idée, puis par une communauté qui décide de la porter. L'Éveil a vocation à être cette communauté.</p>
+
+  <div class="motto">Réveiller les consciences. Éclairer les décisions. Construire l'avenir.</div>
+</article>
+
+<footer>
+  <div class="wrap">© 2026 L'Éveil — <a href="index.html">Retour à l'accueil</a> · <a href="contact.html">Contact</a></div>
+</footer>
+
+</body>
+</html>
