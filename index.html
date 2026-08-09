@@ -175,6 +175,35 @@
 
   /* ---------- DOMAINS ---------- */
   .domains-section{background:var(--paper-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+
+  /* État des lieux */
+  .eldl-section{background:var(--paper); border-bottom:1px solid var(--line);}
+  .eldl-intro{max-width:560px; font-size:14.5px; color:var(--ink-soft); opacity:0.8; line-height:1.6; margin-bottom:36px;}
+  .eldl-intro a{color:var(--gold); font-weight:600;}
+  .eldl-card{
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--gold-bright);
+    border-radius:10px; padding:30px 32px;
+  }
+  .eldl-card .eldl-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em;
+    background:rgba(201,154,61,0.16); color:var(--gold); padding:5px 12px; border-radius:999px; display:inline-block; margin-bottom:16px;
+  }
+  .eldl-card h3{font-size:21px; font-weight:500; margin-bottom:10px;}
+  .eldl-card h3 a{color:inherit; text-decoration:none;}
+  .eldl-card p{font-size:14.5px; color:var(--ink-soft); margin-bottom:18px; line-height:1.6;}
+  .eldl-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;}
+  .eldl-badge{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.04em;
+    padding:4px 10px; border-radius:999px; font-weight:600;
+  }
+  .eldl-badge.done{background:rgba(27,115,64,0.14); color:var(--green);}
+  .eldl-badge.late{background:rgba(179,18,46,0.12); color:var(--red);}
+  .eldl-badge.progress{background:rgba(201,154,61,0.18); color:var(--gold);}
+  .eldl-meta{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); opacity:0.7; margin-bottom:18px;}
+  .eldl-next{
+    margin-top:20px; padding-top:18px; border-top:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); opacity:0.6;
+  }
   .domain-grid{
     display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
     background:var(--line);
@@ -367,7 +396,8 @@
     <div class="nav-links">
       <a href="#mission">Qui sommes-nous</a>
       <a href="#domaines">Domaines</a>
-      <a href="#publications">Publications</a>
+      <a href="#etat-des-lieux">État des lieux</a>
+      <a href="#publications">Tribunes</a>
       <a href="#podcast">Podcast</a>
     </div>
     <a href="#newsletter" class="btn btn-solid">S'abonner</a>
@@ -442,6 +472,39 @@
       <div class="domain-card"><span class="num">05</span><h3>Agriculture</h3><p>Souveraineté alimentaire, filières, ruralité.</p></div>
       <div class="domain-card"><span class="num">06</span><h3>Diaspora & intégration</h3><p>Diaspora camerounaise, intégration africaine.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="etat-des-lieux" class="eldl-section">
+  <div class="wrap" style="padding:96px 0;">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Nouvelle série · Chaque semaine</div>
+        <h2>État des lieux</h2>
+      </div>
+      <p>Chaque semaine, nous auditons un projet ou programme lancé dans le cadre des grandes stratégies nationales de développement du Cameroun — sourcé, vérifiable, avec un statut clair.</p>
+    </div>
+    <p class="eldl-intro">Cette série s'inscrit dans la continuité du DSCE (2010-2020) et de la SND30 (2020-2030). <a href="etat-des-lieux-lancement.html">Lire l'article de lancement de la série →</a></p>
+    <div class="eldl-card">
+      <span class="eldl-tag">État des lieux · N° 01 · Énergie</span>
+      <h3><a href="etat-des-lieux-lom-pangar.html">Le barrage de Lom Pangar</a></h3>
+      <p>Le barrage régule le fleuve Sanaga depuis 2015, mais l'usine de production n'a atteint sa pleine capacité qu'en 2024 — et le programme d'électrification de 150 villages promis n'est réalisé qu'à un peu plus d'un quart.</p>
+      <div class="eldl-badges">
+        <span class="eldl-badge done">Barrage : achevé</span>
+        <span class="eldl-badge late">Usine : retard important</span>
+        <span class="eldl-badge late">Électrification : en retard</span>
+        <span class="eldl-badge progress">Indemnisations : en cours</span>
+      </div>
+      <div class="eldl-meta">Par Kaljop Bakouba · 2026 · 7 min de lecture</div>
+      <div class="share-row on-light" style="margin-top:0; padding-top:16px;">
+        <span class="share-label">Partager</span>
+        <a href="#" onclick="shareIt('facebook', new URL('etat-des-lieux-lom-pangar.html', location.href).href, 'État des lieux : le barrage de Lom Pangar — L\'Éveil'); return false;">Facebook</a>
+        <a href="#" onclick="shareIt('linkedin', new URL('etat-des-lieux-lom-pangar.html', location.href).href, 'État des lieux : le barrage de Lom Pangar — L\'Éveil'); return false;">LinkedIn</a>
+        <a href="#" onclick="shareIt('x', new URL('etat-des-lieux-lom-pangar.html', location.href).href, 'État des lieux : le barrage de Lom Pangar — L\'Éveil'); return false;">X</a>
+        <a href="#" onclick="shareIt('whatsapp', new URL('etat-des-lieux-lom-pangar.html', location.href).href, 'État des lieux : le barrage de Lom Pangar — L\'Éveil'); return false;">WhatsApp</a>
+      </div>
+    </div>
+    <div class="eldl-next">Prochain « État des lieux » : chaque semaine, un nouveau projet audité.</div>
   </div>
 </section>
 
