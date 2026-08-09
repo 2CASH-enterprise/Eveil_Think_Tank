@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Éveil — État des lieux : pourquoi nous auditons les grandes promesses de développement du Cameroun</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2B; --ink-soft:#1C2E45;
+    --paper:#F7F2E7; --paper-dim:#EFE7D6;
+    --green:#1B7340; --red:#B3122E;
+    --gold:#C99A3D; --gold-bright:#E9B94A;
+    --line: rgba(14,27,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.7;}
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,242,231,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:40px; width:40px; border-radius:50%; object-fit:cover;}
+  .brand-name{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .back{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em;
+    border:1px solid var(--ink); padding:9px 16px; border-radius:999px;
+  }
+  .back:hover{background:var(--ink); color:var(--paper);}
+
+  header.hero{
+    background:radial-gradient(120% 90% at 82% -10%, #24405c 0%, var(--ink) 45%, #08121d 100%);
+    color:var(--paper); padding:60px 0 50px;
+  }
+  .tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.06em; padding:5px 12px; border-radius:999px; background:rgba(233,185,74,0.22); color:var(--gold-bright);
+    margin-bottom:16px;
+  }
+  header.hero h1{font-family:'Fraunces', serif; font-size:clamp(26px,4vw,38px); font-weight:500; max-width:640px; line-height:1.25;}
+  .meta-line{margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:#B7C0CB;}
+  .flag-strip{height:5px; display:flex;}
+  .flag-strip span{flex:1;}
+  .flag-strip .g{background:var(--green);} .flag-strip .r{background:var(--red);} .flag-strip .y{background:var(--gold-bright);}
+
+  article{padding:52px 0 80px;}
+  article p{margin-bottom:20px; font-size:16.5px; color:var(--ink-soft);}
+  article h2{
+    font-family:'Fraunces', serif; font-weight:500; font-size:21px; color:var(--ink);
+    margin:38px 0 14px;
+  }
+  .lead{font-size:18px; color:var(--ink); font-weight:500;}
+  .note{
+    margin-top:36px; padding:18px 20px; border-left:3px solid var(--gold); background:var(--paper-dim);
+    font-size:13.5px; color:var(--ink-soft); font-style:italic; border-radius:0 8px 8px 0;
+  }
+  .share-row{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin:36px 0 8px; padding-top:18px; border-top:1px solid var(--line);
+  }
+  .share-row .share-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); opacity:0.7;}
+  .share-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink);
+    border:1px solid var(--line); padding:5px 12px; border-radius:999px;
+    text-decoration:none; transition:all .2s;
+  }
+  .share-row a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+
+  .audio-btn{
+    display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+    background:var(--gold-bright); color:var(--ink); font-weight:600; font-size:13.5px;
+    padding:11px 20px; border-radius:999px; border:none; cursor:pointer;
+    font-family:'Inter', sans-serif;
+  }
+  .audio-btn:hover{background:#f2c869;}
+  .audio-note{font-size:11px; color:#B7C0CB; margin-top:8px; font-family:'IBM Plex Mono', monospace;}
+
+  footer{background:#08121D; color:#8996A5; padding:36px 0; text-align:center; font-size:12.5px;}
+  footer a{color:#B7C0CB;}
+
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Logo L'Éveil">
+      <span class="brand-name">L'Éveil</span>
+    </div>
+    <a href="index.html" class="back">← Retour à l'accueil</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">État des lieux · Lancement de la série</span>
+    <h1>État des lieux : pourquoi nous auditons les grandes promesses de développement du Cameroun</h1>
+    <div class="meta-line">Par Kaljop Bakouba, cofondateur de L'Éveil · 2026 · 4 min de lecture</div>
+    <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">🔊 Écouter cet article</button>
+    <div class="audio-note">Lecture vocale automatique (voix du navigateur) — la qualité dépend de votre appareil.</div>
+  </div>
+</header>
+<div class="flag-strip"><span class="g"></span><span class="r"></span><span class="y"></span></div>
+
+<article class="wrap">
+  <p class="lead">Dans une perspective de faire du Cameroun un pays émergent à l'horizon 2035, l'État camerounais a lancé, ces quinze dernières années, plusieurs initiatives stratégiques de grande ampleur. La première, le Document de Stratégie pour la Croissance et l'Emploi (DSCE), courait sur la période 2010-2020. Elle s'est achevée sans qu'un audit public en dresse le bilan clair, sans que les citoyens sachent précisément ce qu'il en est advenu — quels projets ont abouti, lesquels ont été abandonnés, à quel coût, avec quels résultats. Le pays est passé directement à la Stratégie Nationale de Développement 2020-2030 (SND30), comme si la page précédente n'appelait aucune évaluation avant d'en tourner une nouvelle.</p>
+  <p>Nous sommes aujourd'hui à trois ans de l'échéance de cette nouvelle stratégie. Et le même silence s'installe déjà autour d'elle : des projets sont annoncés, des budgets votés, des cérémonies de lancement médiatisées — puis, le plus souvent, plus rien. Pas de suivi public régulier, pas de bilan intermédiaire accessible, pas d'espace où un citoyen peut simplement vérifier : ce projet dont on m'a parlé il y a deux ans, où en est-il vraiment ?</p>
+  <h2>Ce que nous voulons faire</h2>
+  <p>C'est dans cette mission d'éveil que nous lançons une série intitulée **État des lieux**. Chaque semaine, nous reviendrons sur un projet ou un programme spécifique parmi ceux annoncés dans le cadre des grandes stratégies nationales de développement, pour établir, aussi précisément que les sources publiques le permettent, où il en est réellement.</p>
+  <p>Ce travail n'a pas vocation à accuser ni à instruire un procès. Il a pour but d'éveiller les consciences, de nourrir le débat public à partir de faits vérifiables plutôt que d'impressions, et d'éclairer les concitoyens sur l'usage réel des ressources et des promesses qui leur ont été faites en leur nom.</p>
+  <h2>Notre méthode</h2>
+  <p>Chaque édition d'État des lieux suivra un format identique : le projet et sa promesse initiale, ce que les sources publiques permettent d'établir aujourd'hui sur son avancement, ce qui reste incertain ou invérifiable — assumé comme tel plutôt que comblé par la spéculation — et un statut de synthèse simple : en cours, en retard, à l'arrêt, achevé, ou statut inconnu faute d'information publique suffisante. Chaque affirmation s'appuiera sur une source publique identifiable, et les institutions concernées seront systématiquement sollicitées pour un droit de réponse.</p>
+  <p>Nous ne prétendons pas remplacer un audit d'État. Nous pensons simplement qu'en l'absence d'un tel audit rendu public, un travail citoyen, rigoureux et transparent sur ses propres limites, a sa place — et qu'il est plus utile à la nation qu'un silence prolongé de plusieurs années.</p>
+  <h2>Une série, un chantier cumulatif</h2>
+  <p>Semaine après semaine, projet après projet, cette série a vocation à devenir plus qu'une collection d'articles isolés : une cartographie vivante de l'état réel des grandes promesses de développement du Cameroun. C'est ce travail cumulatif, plus que chaque édition prise séparément, qui nous semble porteur du changement de regard que nous appelons de nos vœux.</p>
+  <div class="note">État des lieux est une série hebdomadaire de L'Éveil. Chaque édition examine un projet ou programme spécifique lancé dans le cadre des grandes stratégies nationales de développement du Cameroun (DSCE 2010-2020, SND30 2020-2030).</div>
+  <div class="share-row">
+    <span class="share-label">Partager cet article</span>
+    <a href="#" onclick="shareIt('facebook'); return false;">Facebook</a>
+    <a href="#" onclick="shareIt('linkedin'); return false;">LinkedIn</a>
+    <a href="#" onclick="shareIt('x'); return false;">X</a>
+    <a href="#" onclick="shareIt('whatsapp'); return false;">WhatsApp</a>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">© 2026 L'Éveil — <a href="index.html">Retour à l'accueil</a> · <a href="contact.html">Contact</a></div>
+</footer>
+
+<script>
+  function shareIt(network){
+    const url = location.href;
+    const text = "État des lieux : pourquoi nous auditons les grandes promesses de développement du Cameroun — L'Éveil";
+    let target = '';
+    if(network === 'facebook') target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    if(network === 'linkedin') target = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    if(network === 'x') target = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    if(network === 'whatsapp') target = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+    window.open(target, '_blank', 'noopener,noreferrer,width=600,height=650');
+  }
+
+  // Lecture audio de l'article (synthèse vocale du navigateur, gratuite)
+  let _isSpeaking = false;
+  function getArticleText(){
+    const article = document.querySelector('article');
+    const parts = [];
+    article.querySelectorAll('h2, p, .lead, .note').forEach(el => {
+      if(el.closest('.share-row')) return;
+      const t = el.innerText.trim();
+      if(t) parts.push(t);
+    });
+    return parts.join('. ');
+  }
+  function toggleAudio(){
+    const btn = document.getElementById('audio-btn');
+    if(!('speechSynthesis' in window)){
+      alert("La lecture audio n'est pas prise en charge par ce navigateur.");
+      return;
+    }
+    if(_isSpeaking){
+      speechSynthesis.cancel();
+      _isSpeaking = false;
+      btn.textContent = '🔊 Écouter cet article';
+      return;
+    }
+    const speak = () => {
+      const text = getArticleText();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'fr-FR';
+      utter.rate = 0.98;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('fr'));
+      if(frVoice) utter.voice = frVoice;
+      utter.onend = () => { _isSpeaking = false; btn.textContent = '🔊 Écouter cet article'; };
+      utter.onerror = () => { _isSpeaking = false; btn.textContent = '🔊 Écouter cet article'; };
+      speechSynthesis.speak(utter);
+      _isSpeaking = true;
+      btn.textContent = '⏸ Arrêter la lecture';
+    };
+    if(speechSynthesis.getVoices().length === 0){
+      speechSynthesis.onvoiceschanged = speak;
+    } else {
+      speak();
+    }
+  }
+</script>
+
+</body>
+</html>
