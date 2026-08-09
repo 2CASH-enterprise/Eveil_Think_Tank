@@ -77,6 +77,15 @@
   footer a{color:#B7C0CB;}
 
   @media(max-width:640px){ .wrap{padding:0 20px;} }
+
+  .audio-btn{
+    display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+    background:var(--gold-bright); color:var(--ink); font-weight:600; font-size:13.5px;
+    padding:11px 20px; border-radius:999px; border:none; cursor:pointer;
+    font-family:'Inter', sans-serif;
+  }
+  .audio-btn:hover{background:#f2c869;}
+  .audio-note{font-size:11px; color:#B7C0CB; margin-top:8px; font-family:'IBM Plex Mono', monospace;}
 </style>
 </head>
 <body>
@@ -96,6 +105,8 @@
     <span class="tag">Tribune · Emploi des jeunes</span>
     <h1>Diplômés et sans emploi : le vrai coût de l'inadéquation entre formation et marché du travail</h1>
     <div class="meta-line">Par Kaljop Bakouba, cofondateur de L'Éveil · 2026 · 5 min de lecture</div>
+    <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">🔊 Écouter cet article</button>
+    <div class="audio-note">Lecture vocale automatique (voix du navigateur) — la qualité dépend de votre appareil.</div>
   </div>
 </header>
 <div class="flag-strip"><span class="g"></span><span class="r"></span><span class="y"></span></div>
@@ -136,6 +147,51 @@
     if(network === 'x') target = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     if(network === 'whatsapp') target = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
     window.open(target, '_blank', 'noopener,noreferrer,width=600,height=650');
+  }
+
+  // Lecture audio de l'article (synthèse vocale du navigateur, gratuite)
+  let _isSpeaking = false;
+  function getArticleText(){
+    const article = document.querySelector('article');
+    const parts = [];
+    article.querySelectorAll('h2, p, .lead, .note').forEach(el => {
+      if(el.closest('.share-row')) return;
+      const t = el.innerText.trim();
+      if(t) parts.push(t);
+    });
+    return parts.join('. ');
+  }
+  function toggleAudio(){
+    const btn = document.getElementById('audio-btn');
+    if(!('speechSynthesis' in window)){
+      alert("La lecture audio n'est pas prise en charge par ce navigateur.");
+      return;
+    }
+    if(_isSpeaking){
+      speechSynthesis.cancel();
+      _isSpeaking = false;
+      btn.textContent = '🔊 Écouter cet article';
+      return;
+    }
+    const speak = () => {
+      const text = getArticleText();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'fr-FR';
+      utter.rate = 0.98;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('fr'));
+      if(frVoice) utter.voice = frVoice;
+      utter.onend = () => { _isSpeaking = false; btn.textContent = '🔊 Écouter cet article'; };
+      utter.onerror = () => { _isSpeaking = false; btn.textContent = '🔊 Écouter cet article'; };
+      speechSynthesis.speak(utter);
+      _isSpeaking = true;
+      btn.textContent = '⏸ Arrêter la lecture';
+    };
+    if(speechSynthesis.getVoices().length === 0){
+      speechSynthesis.onvoiceschanged = speak;
+    } else {
+      speak();
+    }
   }
 </script>
 
