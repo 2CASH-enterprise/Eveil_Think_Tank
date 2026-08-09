@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'Éveil — État des lieux : le barrage de Lom Pangar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1B2B; --ink-soft:#1C2E45;
+    --paper:#F7F2E7; --paper-dim:#EFE7D6;
+    --green:#1B7340; --red:#B3122E;
+    --gold:#C99A3D; --gold-bright:#E9B94A;
+    --line: rgba(14,27,43,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.7;}
+  a{color:inherit;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,242,231,0.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{max-width:1000px; display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{height:40px; width:40px; border-radius:50%; object-fit:cover;}
+  .brand-name{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .back{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em;
+    border:1px solid var(--ink); padding:9px 16px; border-radius:999px;
+  }
+  .back:hover{background:var(--ink); color:var(--paper);}
+
+  header.hero{
+    background:radial-gradient(120% 90% at 82% -10%, #24405c 0%, var(--ink) 45%, #08121d 100%);
+    color:var(--paper); padding:60px 0 50px;
+  }
+  .tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:0.06em; padding:5px 12px; border-radius:999px; background:rgba(233,185,74,0.22); color:var(--gold-bright);
+    margin-bottom:16px;
+  }
+  header.hero h1{font-family:'Fraunces', serif; font-size:clamp(26px,4vw,38px); font-weight:500; max-width:640px; line-height:1.25;}
+  .meta-line{margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:#B7C0CB;}
+  .flag-strip{height:5px; display:flex;}
+  .flag-strip span{flex:1;}
+  .flag-strip .g{background:var(--green);} .flag-strip .r{background:var(--red);} .flag-strip .y{background:var(--gold-bright);}
+
+  article{padding:52px 0 80px;}
+  article p{margin-bottom:20px; font-size:16.5px; color:var(--ink-soft);}
+  article h2{
+    font-family:'Fraunces', serif; font-weight:500; font-size:21px; color:var(--ink);
+    margin:38px 0 14px;
+  }
+  .chapeau{
+    background:var(--paper-dim); border-left:3px solid var(--gold-bright); border-radius:0 8px 8px 0;
+    padding:16px 20px; font-size:14px; color:var(--ink-soft); margin-bottom:34px; line-height:1.6;
+  }
+  .note{
+    margin-top:36px; padding:18px 20px; border-left:3px solid var(--gold); background:var(--paper-dim);
+    font-size:13.5px; color:var(--ink-soft); font-style:italic; border-radius:0 8px 8px 0;
+  }
+  .source-list{margin:0 0 20px 20px; font-size:14px; color:var(--ink-soft);}
+  .source-list li{margin-bottom:8px;}
+  .badges{display:flex; flex-direction:column; gap:10px; margin:10px 0 30px;}
+  .badge-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:14px; color:var(--ink-soft);}
+  .badge{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
+    padding:4px 11px; border-radius:999px; font-weight:600; flex-shrink:0;
+  }
+  .badge-done{background:rgba(27,115,64,0.16); color:var(--green);}
+  .badge-late{background:rgba(179,18,46,0.13); color:var(--red);}
+  .badge-progress{background:rgba(201,154,61,0.18); color:var(--gold);}
+
+  .share-row{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin:36px 0 8px; padding-top:18px; border-top:1px solid var(--line);
+  }
+  .share-row .share-label{font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); opacity:0.7;}
+  .share-row a{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink);
+    border:1px solid var(--line); padding:5px 12px; border-radius:999px;
+    text-decoration:none; transition:all .2s;
+  }
+  .share-row a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+
+  .audio-btn{
+    display:inline-flex; align-items:center; gap:8px; margin-top:20px;
+    background:var(--gold-bright); color:var(--ink); font-weight:600; font-size:13.5px;
+    padding:11px 20px; border-radius:999px; border:none; cursor:pointer;
+    font-family:'Inter', sans-serif;
+  }
+  .audio-btn:hover{background:#f2c869;}
+  .audio-note{font-size:11px; color:#B7C0CB; margin-top:8px; font-family:'IBM Plex Mono', monospace;}
+
+  footer{background:#08121D; color:#8996A5; padding:36px 0; text-align:center; font-size:12.5px;}
+  footer a{color:#B7C0CB;}
+
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <img src="logo.png" alt="Logo L'Éveil">
+      <span class="brand-name">L'Éveil</span>
+    </div>
+    <a href="index.html" class="back">← Retour à l'accueil</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">État des lieux · N° 01 · Énergie</span>
+    <h1>Le barrage de Lom Pangar</h1>
+    <div class="meta-line">Par Kaljop Bakouba, cofondateur de L'Éveil · 2026 · 7 min de lecture</div>
+    <button class="audio-btn" id="audio-btn" onclick="toggleAudio()">🔊 Écouter cet article</button>
+    <div class="audio-note">Lecture vocale automatique (voix du navigateur) — la qualité dépend de votre appareil.</div>
+  </div>
+</header>
+<div class="flag-strip"><span class="g"></span><span class="r"></span><span class="y"></span></div>
+
+<article class="wrap">
+  <div class="chapeau">Cet article fait partie de la série hebdomadaire <strong>État des lieux</strong>, dans laquelle L'Éveil examine, projet par projet, l'avancement réel des grandes stratégies nationales de développement du Cameroun. <a href="etat-des-lieux-lancement.html" style="color:var(--gold); font-weight:600;">Lire l'article de lancement de la série →</a></div>
+  <h2>Le projet</h2>
+  <p>Le barrage hydroélectrique de Lom Pangar est situé dans la région de l'Est, département du Lom-et-Djerem, arrondissement de Belabo. La première pierre a été posée le 3 août 2012 par le président Paul Biya. La construction a été confiée à l'entreprise chinoise China International Water & Electricity Corporation (CWE), sous la maîtrise d'ouvrage d'Electricity Development Corporation (EDC), l'entreprise publique de patrimoine du secteur électrique.</p>
+  <p>Le projet a mobilisé cinq bailleurs de fonds : la Banque mondiale, la Banque africaine de développement (BAD), la Banque européenne d'investissement (BEI), l'Agence française de développement (AFD) et la Banque de développement des États de l'Afrique centrale (BDEAC). Le coût global est généralement cité à 240,9 milliards de FCFA selon plusieurs sources économiques camerounaises, même si une source évoque un coût final proche de 300 milliards de FCFA — un écart qui, à lui seul, illustre le manque de clarté persistant sur le financement exact du projet.</p>
+  <h2>La promesse initiale</h2>
+  <p>Lom Pangar devait remplir deux fonctions. D'abord, réguler le débit du fleuve Sanaga — qui concentre l'essentiel du potentiel hydroélectrique du pays — grâce à un réservoir de 6 milliards de mètres cubes, afin de stabiliser la production des barrages situés en aval. Ensuite, alimenter directement la région de l'Est via une centrale au pied du barrage (« usine de pied ») d'une capacité de 30 mégawatts, avec un programme d'électrification annoncé pour 150 villages de la région.</p>
+  <h2>Ce que l'on sait aujourd'hui</h2>
+  <p>La fonction de régulation du fleuve est opérationnelle depuis la mise en eau du réservoir en septembre 2015. Selon des déclarations de la Banque mondiale et plusieurs articles économiques, cette régulation a permis d'ajouter de l'ordre de 120 à 200 mégawatts de capacité aux centrales situées en aval sur la Sanaga — l'écart entre ces deux chiffres, selon les sources et les années, reste lui-même non expliqué publiquement.</p>
+  <p>L'usine de pied, en revanche, a connu un parcours nettement plus chaotique que ne le laissait supposer l'annonce initiale. Sa première turbine n'a injecté ses premiers mégawatts qu'en mai 2023 — un article économique de l'époque évoque explicitement « deux rendez-vous manqués » avant cette mise en service. La capacité totale de 30 mégawatts n'a été atteinte qu'au 2 janvier 2024, soit près de neuf ans après la mise en eau du barrage lui-même. En février 2024, le gouvernement annonçait encore devoir mobiliser 19 milliards de FCFA supplémentaires pour solder des arriérés de paiement dus aux entreprises intervenues sur le chantier.</p>
+  <p>Le volet électrification rurale, présenté comme l'un des bénéfices concrets du projet pour les populations locales, reste très en retard sur son objectif : selon les propos du directeur général d'EDC rapportés en 2026, une quarantaine de villages sur les 150 annoncés avaient été effectivement électrifiés à cette date — soit un peu plus du quart de l'objectif, plus d'une décennie après le lancement du projet.</p>
+  <p>Les travaux annexes se poursuivent également bien après la mise en service présentée comme acquise : en mars 2026, l'État procédait encore à l'indemnisation de 682 personnes affectées par la construction d'une ligne à haute tension entre Abong-Mbang et Bertoua, pour un montant de 291 millions de FCFA — après une opération similaire en 2023 pour une autre ligne moyenne tension. Sur le terrain, un reportage publié en juillet 2025 décrit des villages situés à proximité immédiate du barrage, comme Bandja, vivant dans des conditions d'enclavement sévère, avec des routes d'accès quasi impraticables — un constat corroboré par un autre article de janvier 2026 sur la dégradation avancée de l'axe Bertoua–Deng Deng–Lom Pangar, pourtant vital pour l'économie locale et l'accès au chantier.</p>
+  <h2>Ce que l'on ne sait pas</h2>
+  <p>Le coût total définitif du projet n'est pas établi de façon univoque dans les sources publiques disponibles — l'écart entre 240,9 et environ 300 milliards de FCFA n'a, à notre connaissance, jamais été expliqué officiellement. Le calendrier précis d'achèvement des 110 villages restant à électrifier n'est pas non plus public. Nous n'avons pas trouvé de bilan consolidé et daté de l'ensemble des indemnisations versées aux populations affectées depuis le début du projet, ni d'évaluation indépendante de la situation actuelle des communautés déplacées ou riveraines, au-delà de témoignages ponctuels de la presse. Nous avons sollicité Electricity Development Corporation (EDC) pour obtenir ces précisions ; cet article sera mis à jour en cas de réponse.</p>
+  <h2>Statut</h2>
+  <h3 style="font-family:'Fraunces',serif; font-size:16px; margin:24px 0 10px; color:var(--ink);">Sources</h3>
+  <ul class="source-list">
+    <li>Investir au Cameroun, plusieurs articles 2019-2026, sur le financement et les indemnisations liées au projet</li>
+    <li>EcoMatin, « Cameroun : 19 milliards de Fcfa pour finaliser le barrage de Lom Pangar », février 2024</li>
+    <li>L'Economie, « Comment l'usine de pied de Lom Pangar a renforcé la production de l'énergie électrique », 2026</li>
+    <li>StopBlablaCam, sur les indemnisations de la ligne haute tension Abong-Mbang–Bertoua, mars 2026</li>
+    <li>En quête de solutions, reportage sur les conditions de vie des populations riveraines, juillet 2025</li>
+    <li>AllAfrica, sur l'état de la route Bertoua–Deng Deng–Lom Pangar, janvier 2026</li>
+    <li>Banque africaine de développement, communiqué de lancement du projet, 2012</li>
+  </ul>
+  <div class="note">Cet article a été rédigé à partir de sources publiques disponibles en ligne. Il sera corrigé ou complété si de nouvelles informations, notamment de la part d'EDC ou des autorités compétentes, viennent le préciser.</div>
+  <div class="badges">
+    <div class="badge-row"><span class="badge badge-done">Achevée</span> Infrastructure principale (barrage et régulation du fleuve) — opérationnelle depuis 2015</div>
+    <div class="badge-row"><span class="badge badge-late">Retard important</span> Usine de pied (30 MW) — pleinement opérationnelle seulement en 2024, plusieurs années après les échéances annoncées</div>
+    <div class="badge-row"><span class="badge badge-late">En retard</span> Électrification rurale (150 villages promis) — un peu plus d'un quart réalisé à ce jour</div>
+    <div class="badge-row"><span class="badge badge-progress">En cours</span> Indemnisations et infrastructures connexes — toujours actives plus d'une décennie après le lancement</div>
+  </div>
+
+  <div class="share-row">
+    <span class="share-label">Partager cet article</span>
+    <a href="#" onclick="shareIt('facebook'); return false;">Facebook</a>
+    <a href="#" onclick="shareIt('linkedin'); return false;">LinkedIn</a>
+    <a href="#" onclick="shareIt('x'); return false;">X</a>
+    <a href="#" onclick="shareIt('whatsapp'); return false;">WhatsApp</a>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">© 2026 L'Éveil — <a href="index.html">Retour à l'accueil</a> · <a href="contact.html">Contact</a></div>
+</footer>
+
+<script>
+  function shareIt(network){
+    const url = location.href;
+    const text = "État des lieux : le barrage de Lom Pangar — L'Éveil";
+    let target = '';
+    if(network === 'facebook') target = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    if(network === 'linkedin') target = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    if(network === 'x') target = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    if(network === 'whatsapp') target = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+    window.open(target, '_blank', 'noopener,noreferrer,width=600,height=650');
+  }
+
+  // Lecture audio de l'article (synthèse vocale du navigateur, gratuite)
+  let _isSpeaking = false;
+  function getArticleText(){
+    const article = document.querySelector('article');
+    const parts = [];
+    article.querySelectorAll('h2, h3, p, .chapeau, .note, .badge-row').forEach(el => {
+      if(el.closest('.share-row')) return;
+      const t = el.innerText.trim();
+      if(t) parts.push(t);
+    });
+    return parts.join('. ');
+  }
+  function toggleAudio(){
+    const btn = document.getElementById('audio-btn');
+    if(!('speechSynthesis' in window)){
+      alert("La lecture audio n'est pas prise en charge par ce navigateur.");
+      return;
+    }
+    if(_isSpeaking){
+      speechSynthesis.cancel();
+      _isSpeaking = false;
+      btn.textContent = '🔊 Écouter cet article';
+      return;
+    }
+    const speak = () => {
+      const text = getArticleText();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'fr-FR';
+      utter.rate = 0.98;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('fr'));
+      if(frVoice) utter.voice = frVoice;
+      utter.onend = () => { _isSpeaking = false; btn.textContent = '🔊 Écouter cet article'; };
+      utter.onerror = () => { _isSpeaking = false; btn.textContent = '🔊 Écouter cet article'; };
+      speechSynthesis.speak(utter);
+      _isSpeaking = true;
+      btn.textContent = '⏸ Arrêter la lecture';
+    };
+    if(speechSynthesis.getVoices().length === 0){
+      speechSynthesis.onvoiceschanged = speak;
+    } else {
+      speak();
+    }
+  }
+</script>
+
+</body>
+</html>
